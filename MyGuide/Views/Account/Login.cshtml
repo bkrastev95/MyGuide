@@ -1,0 +1,29 @@
+﻿@using MyGuide.Models;
+
+@model LoginModel
+@{
+    ViewBag.Title = @Resource.Login;
+
+    var returnUrl = ViewBag.ReturnUrl as string;
+}
+
+<h2>@Resource.Login</h2>
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post))
+{
+    @Html.ValidationSummary(true);
+
+    @Html.Hidden("returnUrl", returnUrl);
+    <div class="input-group">
+        @Html.LabelFor(m => m.Username)
+        @Html.TextBoxFor(m => m.Username, new { @class = "block" })
+        @Html.ValidationMessageFor(m => m.Username)
+    </div>
+
+    <div class="input-group">
+        @Html.LabelFor(m => m.Password)
+        @Html.PasswordFor(m => m.Password, new { @class = "block" })
+        @Html.ValidationMessageFor(m => m.Password)
+    </div>
+    <button type="submit">@Resource.Login</button>
+}

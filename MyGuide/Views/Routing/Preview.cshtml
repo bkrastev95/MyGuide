@@ -1,0 +1,39 @@
+﻿@{
+    var dates = ViewBag.Dates != null && ViewBag.Dates is List<string> ? ViewBag.Dates as List<string> : null;
+}
+
+<div class="route-date-wrapper">
+    @if (dates != null && dates.Count > 0)
+    {
+        <label>@Resource.ChooseDate:</label>
+        <select>
+            <option value="" disabled selected>@Resource.Choose</option>
+            @foreach (var date in dates)
+            {
+                <option value="@date">@date</option>
+            }
+        </select>
+    }
+    else
+    {
+        <h3>@Resource.NoRoutesYet</h3>
+    }
+</div>
+<div id="resultDiv">
+
+</div>
+
+@section Scripts{
+    <script>
+        $(document).on("change", "select", function (e) {
+            var date = e.target.value;
+            $.ajax({
+                url: "/MyGuide/Routing/ShowRoute?date=" + date.toString(),
+                success: function (view) {
+                    $("#resultDiv").html(view);
+                }
+            });
+        });
+    </script>
+
+}

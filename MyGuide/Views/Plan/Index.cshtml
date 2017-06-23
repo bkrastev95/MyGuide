@@ -1,0 +1,42 @@
+﻿@using MyGuide.Models;
+
+@{
+    ViewBag.Title = "Index";
+
+    var towns = ViewBag.Towns as SelectList;
+    var chosen = ViewBag.ChosenDestinatins as List<Destination> ?? new List<Destination>();
+}
+
+<h2>@Resource.PlanTourLabel</h2>
+
+<div id="search-wrapper">
+    <div class="left-search">
+        <div id="searchform">
+            @Html.Partial("SearchForm")
+        </div>
+        <div id="searchResult"></div>
+    </div>
+    <div class="right-search">
+        <div id="chosenItems">@Html.Partial("ChosenDestinations", chosen)</div>
+        <div class="bottom-button-container hidden">
+            <div class="form-group town-select-container">
+                <label>@Resource.HomePlaceLabel</label>
+                @Html.DropDownList("homeTown", towns, Resource.Choose)
+            </div>
+            <button id="go-to-map-js">
+                @Resource.ToMap →
+            </button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            if ($(".chosenItems-content").length && $(".bottom-button-container").hasClass("hidden")) {
+                $(".bottom-button-container").removeClass("hidden");
+            }
+        })
+    </script>
+}
+

@@ -1,0 +1,312 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+html, body, .container.body-content {
+    height: 100%;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+span.field-validation-error, .validation-summary-errors  li {
+    color: red;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+div.jumbotron {
+    background: url(../Images/Home/Main.jpg);
+    background-size: cover;
+}
+
+.jumbotron > h1 {
+    font-family: 'Bookman Old Style';
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: white;
+}
+
+.jumbotron > p {
+    font-weight: bold;
+}
+
+.jumbotron a.btn {
+    background: #3362b7;
+}
+
+.block {
+    display: block;
+}
+
+.search-group {
+    margin: 5px;
+    margin-right: 10px;
+    float: left;
+}
+
+    .search-group select {
+        width: 200px;
+        height: 25px;
+    }
+
+    .search-group input[type=text] {
+        width: 200px;
+        height: 25px;
+    }
+
+    .search-group label {
+        font-size: 18px;
+    }
+
+#loader {
+    position: absolute;
+}
+
+#search-wrapper {
+    height: 80%;
+}
+
+.left-search {
+    height: 100%;
+    width: 57%;
+    float: left;
+}
+
+.right-search {
+    height: 100%;
+    width: 37%;
+    float: right;
+}
+
+#searchform {
+    width: 100%;
+    height: 20%;
+}
+
+#searchResult {
+    width: 100%;
+    height: 80%;
+}
+
+#chosenItems {
+    width: 100%;
+    height: 75%;
+}
+
+.searchresult-content, .chosenItems-content {
+    height: 90%;
+    overflow-y: auto;
+}
+
+
+#searchform button {
+    float: right;
+    margin-right: 15px;
+}
+
+.dest-icon {
+    margin-left: 5px;
+    float: left;
+}
+
+.dest-title {
+    margin-left: 5px;
+    font-weight: bold;
+    font-size: large;
+}
+
+.dest-content {
+    background-color: #d9d9d9;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    height: 120px;
+}
+
+.dest-actions {
+    width: 20%;
+    float: right;
+    right: 5px;
+}
+
+    .dest-actions button {
+        width: 90%;
+        margin-top: 5px;
+        display: block;
+    }
+
+.dest-data {
+    margin-left: 5px;
+    font-size: 18px;
+    float: left;
+    max-width: 65%;
+}
+
+.dest-desc {
+    font-size: small;
+    height: 80px;
+    width: 33%;
+}
+
+#chosenItems .dest-content {
+    height: 85px;
+}
+
+#chosenItems .dest-actions {
+    width: 30%;
+    right: 3px;
+}
+
+#chosenItems .dest-data {
+    margin-left: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.bottom-button-container {
+    width: 100%;
+    height: 25%;
+    bottom: 5px;
+    position: relative;
+}
+
+    .bottom-button-container button {
+        font-size: large;
+        font-weight: bold;
+        height: 40%;
+        width: 100%;
+        position: absolute;
+        right: 2px;
+        bottom: 3px;
+    }
+
+    .bottom-button-container label {
+        font-size: 18px;
+    }
+
+    .bottom-button-container select {
+        width: 200px;
+        height: 25px;
+    }
+
+#info-popup {
+    visibility: hidden;
+    height: 40%;
+    width: 40%;
+    position: absolute;
+    background-color: brown;
+    left: 30%;
+    top: 20%;
+    z-index: 1;
+}
+
+    #info-popup .popup-content {
+        height: 88%;
+        width: 96%;
+        background: white;
+        left: 2%;
+        top: 8%;
+        position: absolute;
+        overflow-y: auto;
+    }
+
+    #info-popup.show {
+        visibility: visible;
+        -webkit-animation: fadeIn 1s;
+        animation: fadeIn 1s
+    }
+
+    #info-popup .close-button {
+        float: right;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+
+/*Add animation (fade in the popup)*/
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+.right-routing-panel, .left-routing-panel {
+    height: 100%;
+}
+
+.right-routing-panel {
+    width: 55%;
+    float: right;
+}
+
+
+.left-routing-panel {
+    width: 40%;
+    float: left;
+}
+
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+
+.map-container {
+    width: 100%;
+    height: 80%;
+    border: 7px dotted #000;
+    box-shadow: inset 0 -3px 0 0 #000, 0 3px 0 0 #000;
+}
+
+.route-date-wrapper {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#go-home-js{
+    cursor: pointer;
+}
+
+#go-home-js p{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px; 
+    margin-right: 40px;
+    float: left;
+}
+
+    #go-home-js img {
+        cursor: pointer;
+        margin-bottom: 10px;
+    }

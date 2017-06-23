@@ -1,0 +1,29 @@
+﻿@using MyGuide.Models
+@model List<Destination>
+
+@{
+    var list = Model.ToList();
+    list.RemoveAt(0);
+}
+
+<script>
+    var points = @Html.Raw(Json.Encode(Model));
+</script>
+
+@if (Model != null && Model.Any())
+{
+    <div class="left-routing-panel">
+        <div id="chosenItems">
+            @Html.Partial("~/Views/Plan/ChosenDestinations.cshtml", list)
+        </div>
+        <div>
+            <button id="save-route-js">
+                @Resource.SaveRoute
+            </button>
+        </div>
+    </div>
+    <div class="right-routing-panel">
+        <h3>@Resource.Map</h3>
+        @Html.Partial("~/Views/Map/Index.cshtml")
+    </div>
+}

@@ -1,0 +1,29 @@
+﻿@using MyGuide.Models;
+
+@model List<Destination>
+
+@if (Model != null && Model.Any())
+{
+    <h3>@Resource.ChosenItems</h3>
+
+    <div class="chosenItems-content">
+        @for (var i = 0; i < Model.Count; i++)
+        {
+        <div class="dest-content">
+            <div class="dest-data">
+                <div>
+                    <b>@Model[i].Name</b>
+                </div>
+                <div>
+                    @Model[i].CityName
+                </div>
+            </div>
+            <div class="dest-actions">
+                @Html.Hidden("itemId-" + i, Model[i].Id)
+                <button class="btn btn-default info">@Resource.Info</button>
+                <button class="btn btn-default remove">@Resource.Remove</button>
+            </div>
+        </div>
+        }
+    </div>
+}

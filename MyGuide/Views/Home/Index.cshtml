@@ -1,0 +1,31 @@
+﻿@using Resources.App_GlobalResources
+
+@{
+    ViewBag.Title = Resource.HomePageTitle;
+}
+
+<div class="jumbotron">
+    <h1>My guide</h1>
+    <p class="lead">@Resource.MotoLabel</p>
+    <p><a href="~/Home/About" class="btn btn-primary btn-lg">@Resource.LearnMoreLabel &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>@Resource.PlanTourLabel</h2>
+        <p>
+            @Resource.PlanTourTileContent
+        </p>
+        <p><a class="btn btn-default" href="~/Plan/Index">@Resource.Go &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Resource.ExploreLabel</h2>
+        <p>@Resource.ExploreTileContent</p>
+        <p><a class="btn btn-default" href="~/Map/ShowMap">@Resource.Go &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>@Resource.PreviewRouteLabel</h2>
+        <p>@Resource.PreviewTileContent</p>
+        <p><a class="btn btn-default" href="~/Routing/Preview">@Resource.Go &raquo;</a></p>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+﻿@using MyGuide.Models;
+
+@model List<Destination>
+
+@{
+    var list = Model.ToList();
+    list.RemoveAt(0);
+}
+
+<script>
+    var points = @Html.Raw(Json.Encode(Model));
+</script>    
+
+
+@if (Model != null && Model.Any())
+{
+    <div class="left-routing-panel">
+        <div id="chosenItems">
+            <h3>@Resource.ChosenItems</h3>
+
+            <div class="chosenItems-content">
+                @for (var i = 0; i < list.Count; i++)
+                {
+                    <div class="dest-content">
+                        <div class="dest-data">
+                            <div>
+                                <b>@list[i].Name</b>
+                            </div>
+                            <div>
+                                @list[i].CityName
+                            </div>
+                        </div>
+                        <div class="dest-actions">
+                            @Html.Hidden("itemId-" + i, list[i].Id)
+                            <button class="btn btn-default info">@Resource.Info</button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="right-routing-panel">
+        <h3>@Resource.Map</h3>
+        @Html.Partial("~/Views/Map/Index.cshtml")
+    </div>
+}

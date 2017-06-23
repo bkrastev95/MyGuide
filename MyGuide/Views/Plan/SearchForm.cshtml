@@ -1,0 +1,37 @@
+﻿@using MyGuide.Models;
+
+@model SearchQueryModel
+@{
+    ViewBag.Title = "SearchForm";
+
+    var towns = ViewBag.Towns as SelectList;
+    var categories = ViewBag.Categories as SelectList;
+}
+
+@using (Ajax.BeginForm("Search", "Plan", new AjaxOptions
+{
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "searchResult",
+    LoadingElementId = "loader"
+}))
+{
+    <div class="form-group search-group">
+        @Html.LabelFor(m => m.PlaceId)
+        @Html.DropDownListFor(m => m.PlaceId, towns, Resource.Choose, new { @class = "block" })
+    </div>
+    <div class="form-group search-group">
+        @Html.LabelFor(m => m.CategoryId)
+        @Html.DropDownListFor(m => m.CategoryId, categories, Resource.Choose, new { @class = "block" })
+    </div>
+    <div class="form-group search-group">
+        @Html.LabelFor(m => m.Keywords)
+        @Html.TextBoxFor(m => m.Keywords, new { @class = "block" })
+    </div>
+    <button type="submit" class="btn btn-default block">
+        <span class="glyphicon glyphicon-search"></span> @Resource.Search
+    </button>
+}
+
+<div id="loader" style="display:none">
+    Loading...<img src="~/Images/loader.gif" />
+</div>

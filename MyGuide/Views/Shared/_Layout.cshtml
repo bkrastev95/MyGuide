@@ -1,0 +1,78 @@
+﻿@using Resources.App_GlobalResources
+@using System.Threading
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My Guide</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("My guide", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="float: left">
+                    <li>@Html.ActionLink(Resource.Home, "Index", "Home")</li>
+                    <li>@Html.ActionLink(Resource.About, "About", "Home")</li>
+                    <li>@Html.ActionLink(Resource.Map, "ShowMap", "Map")</li>
+                </ul>
+                <ul class="nav navbar-nav" style="float: right">
+                    <li>
+                        @if (User != null)
+                        {
+                            @Ajax.ActionLink($"{ User.FullName } { Resource.Logout }", "Logout", "Account", null, new AjaxOptions { HttpMethod = "POST", OnSuccess = "window.location.reload();" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink(Resource.Login, "Login", "Account")
+                        }
+                    </li>
+                    <li>
+                        @if (string.Equals(Thread.CurrentThread.CurrentUICulture.TwoLetterISOLanguageName, "bg", StringComparison.InvariantCultureIgnoreCase))
+                        {
+                            <a href="@(Url.Action("ChangeCulture", "Home", new {  lang= "en-US" }))">
+                                <img src="~/Images/gb_flag.png" height="25" width="25" />
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="@(Url.Action("ChangeCulture", "Home", new {  lang= "bg-BG" }))">
+                                <img src="~/Images/bg_flag.png" height="25" width="25" />
+                            </a>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        <div id="info-popup">
+            <div>
+                <div class="close-button">X</div>
+            </div>
+            <div class="popup-content"></div>
+        </div>
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/common")
+    @Scripts.Render("~/bundles/mapBundle")
+    @RenderSection("scripts", required: false)
+    <script>
+        siteRoot = '@Request.UserHostAddress';
+        window.onload = function () { core.Init(); };
+    </script>
+</body>
+</html>
